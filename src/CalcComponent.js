@@ -18,26 +18,25 @@ export const Calc = () => {
                     returnValue = '0';
                     break;
                 case '-':
-                    if (result !== '0' && result.length >= 1 && !result.match(/[+-]/)) {
+                    if (result !== '0' && !result.match(/[+-]/)) {
                         returnValue = result + value;
                     } else {
                         returnValue = result;
                     }
                     break;
                 case '+':
-                    if (result !== '0' && result.length >= 1 && !result.match(/[+-]/)) {
+                    if (result !== '0' && !result.match(/[+-]/)) {
                         returnValue = result + value;
                     } else {
                         returnValue = result;
                     }
                     break;
                 default:
-                    if (result.length < 14) {
+                    if (result === '0') {
+                        returnValue = value;
+                    } else if (value !== '0' && result.length < 14) {
                         returnValue = result + value;
                     }
-            }
-            if (result === '0') {
-                returnValue = value;
             }
             setResult((updatedValue) => (updatedValue = returnValue));
         }
