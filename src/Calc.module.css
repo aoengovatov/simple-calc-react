@@ -1,0 +1,70 @@
+.container {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calcContainer {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.buttonContainer {
+    width: 225px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #1e1e1f;
+}
+
+.buttonFuncContainer {
+    width: 75px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calcDisplay {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 10px;
+    font-size: 30px;
+    border: 1px solid #524e4e;
+    color: #c6cbd6;
+}
+
+.panelContainer {
+    display: flex;
+}
+
+.button {
+    width: 75px;
+    height: 55px;
+    background: #1e1e1f;
+    color: #ebe1e1;
+    font-size: 20px;
+    border: 1px solid #252323;
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background: #272729;
+}
+
+.buttonFunc {
+    width: 75px;
+    height: 55px;
+    background: #e1bb2f;
+    color: #2d2828;
+    font-size: 23px;
+    border: 1px solid #bb9b27;
+    transition: all 0.2s;
+}
+
+.buttonFunc:hover {
+    background: #cea727;
+}
