@@ -11,6 +11,10 @@
     display: flex;
     flex-direction: column;
     width: 300px;
+    border: 1px solid #242222;
+    border-radius: 4px;
+    padding: 7px;
+    background: #0000000f;
 }
 
 .buttonContainer {
@@ -27,12 +31,12 @@
 }
 
 .calcDisplay {
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: right;
-    padding-right: 10px;
-    font-size: 30px;
+    padding-right: 15px;
+    font-size: 35px;
     border: 1px solid #524e4e;
     color: #c6cbd6;
 }
