@@ -38,7 +38,14 @@
     padding-right: 15px;
     font-size: 35px;
     border: 1px solid #524e4e;
+}
+
+.textDefault {
     color: #c6cbd6;
+}
+
+.textResult {
+    color: #e1bb2f;
 }
 
 .panelContainer {

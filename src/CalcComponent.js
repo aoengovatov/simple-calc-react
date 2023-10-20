@@ -1,6 +1,8 @@
 import styles from './Calc.module.css';
 import { useState } from 'react';
 
+let resultStyle = false;
+
 export const Calc = () => {
     const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const [result, setResult] = useState('0');
@@ -27,6 +29,7 @@ export const Calc = () => {
     const onClick = (event) => {
         const value = event.target.dataset.value;
         let returnValue = '';
+        resultStyle = false;
 
         if (value !== undefined) {
             switch (value) {
@@ -38,6 +41,7 @@ export const Calc = () => {
                     const mathRes = getMathResult(result);
                     if (mathRes !== null) {
                         returnValue = String(mathRes);
+                        resultStyle = true;
                     } else {
                         returnValue = '0';
                     }
@@ -70,7 +74,13 @@ export const Calc = () => {
     return (
         <div className={styles.container}>
             <div className={styles.calcContainer}>
-                <div className={styles.calcDisplay}>{result}</div>
+                <div className={styles.calcDisplay}>
+                    <span
+                        className={resultStyle ? styles.textResult : styles.textDefault}
+                    >
+                        {result}
+                    </span>
+                </div>
                 <div className={styles.panelContainer} onClick={onClick}>
                     <div className={styles.buttonContainer}>
                         {buttons.map((button) => (
