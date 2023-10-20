@@ -5,6 +5,25 @@ export const Calc = () => {
     const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     const [result, setResult] = useState('0');
 
+    const getMathResult = (str) => {
+        let res = null;
+        const mathSymbol = str.match(/[+-]/);
+        if (mathSymbol !== null && str.split(mathSymbol).length === 2) {
+            const args = str.split(mathSymbol);
+            if (args[1] !== '') {
+                switch (mathSymbol[0]) {
+                    case '+':
+                        res = Number(args[0]) + Number(args[1]);
+                        break;
+                    case '-':
+                        res = Number(args[0]) - Number(args[1]);
+                        break;
+                }
+            }
+        }
+        return res;
+    };
+
     const onClick = (event) => {
         const value = event.target.dataset.value;
         let returnValue = '';
@@ -15,8 +34,13 @@ export const Calc = () => {
                     returnValue = '0';
                     break;
                 case '=':
-                    // вызов функции расчета результата
-                    returnValue = '0';
+                    console.log(result);
+                    const mathRes = getMathResult(result);
+                    if (mathRes !== null) {
+                        returnValue = String(mathRes);
+                    } else {
+                        returnValue = '0';
+                    }
                     break;
                 case '-':
                     if (result !== '0' && !result.match(/[+-]/)) {
