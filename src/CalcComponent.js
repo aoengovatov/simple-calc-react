@@ -8,22 +8,15 @@ export const Calc = () => {
     const [result, setResult] = useState('0');
 
     const getMathResult = (str) => {
-        let res = null;
+        let total = null;
         const mathSymbol = str.match(/[+-]/);
-        if (mathSymbol !== null && str.split(mathSymbol).length === 2) {
-            const args = str.split(mathSymbol);
-            if (args[1] !== '') {
-                switch (mathSymbol[0]) {
-                    case '+':
-                        res = Number(args[0]) + Number(args[1]);
-                        break;
-                    case '-':
-                        res = Number(args[0]) - Number(args[1]);
-                        break;
-                }
+        if (mathSymbol !== null) {
+            str = str.match(/[+\-]*(\.\d+|\d+(\.\d+)?)/g) || [];
+            while (str.length) {
+                total += parseFloat(str.shift());
             }
         }
-        return res;
+        return total;
     };
 
     const onClick = (event) => {
@@ -37,7 +30,6 @@ export const Calc = () => {
                     returnValue = '0';
                     break;
                 case '=':
-                    console.log(result);
                     const mathRes = getMathResult(result);
                     if (mathRes !== null) {
                         returnValue = String(mathRes);
@@ -47,14 +39,14 @@ export const Calc = () => {
                     }
                     break;
                 case '-':
-                    if (result !== '0' && !result.match(/[+-]/)) {
+                    if (result !== '0' && !result.split('').at(-1).match(/[+-]/)) {
                         returnValue = result + value;
                     } else {
                         returnValue = result;
                     }
                     break;
                 case '+':
-                    if (result !== '0' && !result.match(/[+-]/)) {
+                    if (result !== '0' && !result.split('').at(-1).match(/[+-]/)) {
                         returnValue = result + value;
                     } else {
                         returnValue = result;
