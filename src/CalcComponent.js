@@ -11,6 +11,7 @@ export const Calc = () => {
     const getMathResult = (str) => {
         let total = null;
         const mathSymbol = str.match(/[+-]/);
+
         if (mathSymbol !== null) {
             str = str.match(/[+\-]*(\.\d+|\d+(\.\d+)?)/g) || [];
             while (str.length) {
@@ -18,6 +19,16 @@ export const Calc = () => {
             }
         }
         return total;
+    };
+
+    const getValuePlusAndMinusOperation = (value, result) => {
+        let returnValue = '';
+        if (result !== '0' && !result.split('').at(-1).match(/[+-]/)) {
+            returnValue = result + value;
+        } else {
+            returnValue = result;
+        }
+        return returnValue;
     };
 
     const onClick = (event) => {
@@ -40,18 +51,8 @@ export const Calc = () => {
                     }
                     break;
                 case '-':
-                    if (result !== '0' && !result.split('').at(-1).match(/[+-]/)) {
-                        returnValue = result + value;
-                    } else {
-                        returnValue = result;
-                    }
-                    break;
                 case '+':
-                    if (result !== '0' && !result.split('').at(-1).match(/[+-]/)) {
-                        returnValue = result + value;
-                    } else {
-                        returnValue = result;
-                    }
+                    returnValue = getValuePlusAndMinusOperation(value, result);
                     break;
                 default:
                     if (result === '0') {
