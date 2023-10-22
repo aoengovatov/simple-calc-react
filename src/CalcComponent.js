@@ -5,6 +5,7 @@ let resultStyle = false;
 
 export const Calc = () => {
     const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const buttonsFunc = ['C', '+', '-', '='];
     const [result, setResult] = useState('0');
 
     const getMathResult = (str) => {
@@ -26,7 +27,7 @@ export const Calc = () => {
 
         if (value !== undefined) {
             switch (value) {
-                case 'cancel':
+                case 'C':
                     returnValue = '0';
                     break;
                 case '=':
@@ -86,18 +87,15 @@ export const Calc = () => {
                         ))}
                     </div>
                     <div className={styles.buttonFuncContainer}>
-                        <button className={styles.buttonFunc} data-value="cancel">
-                            C
-                        </button>
-                        <button className={styles.buttonFunc} data-value="+">
-                            +
-                        </button>
-                        <button className={styles.buttonFunc} data-value="-">
-                            -
-                        </button>
-                        <button className={styles.buttonFunc} data-value="=">
-                            =
-                        </button>
+                        {buttonsFunc.map((button) => (
+                            <button
+                                className={styles.buttonFunc}
+                                data-value={button}
+                                key={button}
+                            >
+                                {button}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
